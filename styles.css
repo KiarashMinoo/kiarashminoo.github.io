@@ -561,13 +561,11 @@ svg {
 }
 
 .license {
-  color: var(--cyan);
+  padding: 4px;
 }
 
 .iiif {
-  color: var(--blue-2);
-  font-family: var(--mono);
-  font-size: 15px;
+  padding: 4px;
 }
 
 .badge {
@@ -820,6 +818,25 @@ svg {
   }
 }
 
+/* Contact buttons — single wrapping row */
+.contact-btns {
+  flex-wrap: wrap;
+}
+
+/* Contact button brand colors */
+.btn i { font-size: 15px; }
+
+.btn-whatsapp i  { color: #25D366; }
+.btn-phone i     { color: var(--blue-2); }
+.btn-phone       { white-space: nowrap; }
+.btn-github i    { color: #e6edf3; }
+.btn-linkedin i  { color: #0A66C2; }
+
+.btn-whatsapp:hover { border-color: rgba(37, 211, 102, 0.55);  background: rgba(37, 211, 102, 0.08); }
+.btn-phone:hover    { border-color: var(--border-strong);       background: rgba(56, 189, 248, 0.10); }
+.btn-github:hover   { border-color: rgba(230, 237, 243, 0.35);  background: rgba(230, 237, 243, 0.07); }
+.btn-linkedin:hover { border-color: rgba(10, 102, 194, 0.55);   background: rgba(10, 102, 194, 0.10); }
+
 @media (max-width: 580px) {
   .site-header {
     top: 8px;
@@ -846,6 +863,16 @@ svg {
     width: 100%;
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .contact-btns {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-btns .btn {
+    width: auto;
   }
 
   .btn {
