@@ -13,6 +13,11 @@
   <link rel="canonical" href="https://kiarashminoo.com" />
   <meta name="theme-color" content="#07111f" />
 
+  <!-- ═══ Google Search Console — ownership verification ═══
+       Steps: search.google.com/search-console → Add property → kiarashminoo.com
+              → HTML tag → copy the "content" value below and remove the TODO prefix -->
+  <meta name="google-site-verification" content="TODO_REPLACE_WITH_SEARCH_CONSOLE_VERIFICATION_CODE" />
+
   <!-- ═══ Open Graph — Facebook, LinkedIn, WhatsApp, Slack, Discord ═══ -->
   <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://kiarashminoo.com" />
@@ -107,6 +112,32 @@
   }
   </script>
 
+  <!-- ═══ Google Tag Manager ═══
+       Steps: tagmanager.google.com → Create account → Web → get GTM-XXXXXXX ID
+              Replace TODO_GTM_ID in BOTH snippets below (head + body).
+       GTM can manage GA4, Google Ads, and other tags without further code changes. -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','TODO_GTM_ID');</script>
+
+  <!-- ═══ Google Analytics 4 (GA4) — direct install fallback ═══
+       Steps: analytics.google.com → Admin → Create property → Web stream → kiarashminoo.com
+              Copy the Measurement ID (G-XXXXXXXXXX) and replace TODO_GA4_MEASUREMENT_ID below.
+       Note: if you use GTM above, you can load GA4 from there instead and remove these two lines. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=TODO_GA4_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'TODO_GA4_MEASUREMENT_ID', {
+      page_title: document.title,
+      page_location: window.location.href,
+      anonymize_ip: true
+    });
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -114,6 +145,10 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Google Tag Manager (noscript fallback — required by GTM spec) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=TODO_GTM_ID"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
   <div class="site-shell">
     <header class="site-header" data-header>
       <a class="brand" href="kiarashminoo.com" aria-label="Ahmad(Kiarash) Minoo's homepage">
