@@ -25,6 +25,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+#home, #expertise, #projects, #experience, #writing, #contact {
+  scroll-margin-top: 76px;
 }
 
 body {
