@@ -612,6 +612,15 @@ svg {
   display: block;
 }
 
+.mini-projects strong a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.mini-projects strong a:hover {
+  color: var(--blue-2);
+}
+
 .mini-projects span {
   margin-top: 5px;
   color: var(--muted);
