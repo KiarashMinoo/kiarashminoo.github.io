@@ -292,7 +292,7 @@ svg {
 
 .hero-visual {
   position: relative;
-  min-height: 500px;
+  min-height: 420px;
   display: grid;
   place-items: end center;
 }
@@ -310,7 +310,7 @@ svg {
 .hero-visual picture {
   position: relative;
   width: min(100%, 450px);
-  aspect-ratio: 0.95;
+  height: 380px;
   border-radius: 30px;
   overflow: hidden;
   border: 1px solid rgba(96, 165, 250, 0.2);
@@ -322,7 +322,7 @@ svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 52% 40%;
+  object-position: 52% 20%;
 }
 
 .glass {
@@ -864,11 +864,13 @@ svg {
 .btn-phone       { white-space: nowrap; }
 .btn-github i    { color: #e6edf3; }
 .btn-linkedin i  { color: #0A66C2; }
+.btn-instagram i { color: #E1306C; }
 
 .btn-whatsapp:hover { border-color: rgba(37, 211, 102, 0.55);  background: rgba(37, 211, 102, 0.08); }
 .btn-phone:hover    { border-color: var(--border-strong);       background: rgba(56, 189, 248, 0.10); }
 .btn-github:hover   { border-color: rgba(230, 237, 243, 0.35);  background: rgba(230, 237, 243, 0.07); }
-.btn-linkedin:hover { border-color: rgba(10, 102, 194, 0.55);   background: rgba(10, 102, 194, 0.10); }
+.btn-linkedin:hover  { border-color: rgba(10, 102, 194, 0.55);   background: rgba(10, 102, 194, 0.10); }
+.btn-instagram:hover { border-color: rgba(225, 48, 108, 0.55);   background: rgba(225, 48, 108, 0.08); }
 
 @media (max-width: 580px) {
   .site-header {
