@@ -3,6 +3,16 @@ const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
 const year = document.querySelector("[data-year]");
 
+const emailLink = document.querySelector("[data-email-link]");
+
+if (emailLink) {
+  const user = emailLink.dataset.emailUser;
+  const domain = emailLink.dataset.emailDomain;
+
+  if (user && domain) {
+    emailLink.href = `mailto:${user}@${domain}`;
+  }
+}
 if (year) {
   year.textContent = new Date().getFullYear();
 }
@@ -64,3 +74,4 @@ if ("IntersectionObserver" in window) {
 
   revealItems.forEach((item) => observer.observe(item));
 }
+
