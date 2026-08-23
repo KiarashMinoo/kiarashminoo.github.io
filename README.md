@@ -1,54 +1,39 @@
 # kiarashminoo.com
 
-Static personal portfolio website for GitHub Pages.
+Source for my personal portfolio at [kiarashminoo.com](https://kiarashminoo.com).
 
-## Deploy to GitHub Pages
+The site is a small static GitHub Pages project. It contains my current engineering profile, selected projects, work history, technical writing links, contact details, and the downloadable CV used from the site header.
 
-1. Create or use this repository:
+## Main content
 
-```bash
-KiarashMinoo/kiarashminoo.github.io
+The project section currently highlights:
+
+- ThunderPropagator and its public .NET 8/9/10 modules
+- IIIF.Manifest.Serializer.Net and related .NET 10 proof-of-concept repositories
+- MinooTrading platform work at a high level
+
+The downloadable CV is stored at:
+
+```text
+assets/Ahmad-Kiarash-Minoo-CV.pdf
 ```
 
-2. Copy all files from this folder into the repository root.
+## Local files
 
-3. Commit and push:
-
-```bash
-git add .
-git commit -m "Add personal portfolio website"
-git push origin main
+```text
+index.html       Main page content and structured metadata
+styles.css       Site styling and responsive layout
+script.js        Navigation and small client-side behaviours
+assets/          Images, project marks and the downloadable CV
+CNAME            Custom-domain configuration
 ```
 
-4. In GitHub:
-   - Go to **Settings → Pages**
-   - Source: **Deploy from a branch**
-   - Branch: **main**
-   - Folder: **/** root
+## GitHub Pages
 
-5. DNS for custom domain:
+The site is published from the `main` branch using GitHub Pages. The custom domain is configured through `CNAME` as:
 
-```txt
-CNAME: kiarashminoo.com
+```text
+kiarashminoo.com
 ```
 
-For apex domain, configure these GitHub Pages A records at your DNS provider:
-
-```txt
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
-
-For www:
-
-```txt
-www CNAME KiarashMinoo.github.io
-```
-
-## Notes
-
-- Replace `assets/profile.png` and `assets/profile.webp` with the final polished personal photo when needed.
-- Add your actual CV as `assets/Ahmad-Kiarash-Minoo-CV.pdf` or change the Download CV links in `index.html`.
-- The custom domain is stored in the `CNAME` file.
+When the CV changes, replace `assets/Ahmad-Kiarash-Minoo-CV.pdf` so the website download stays in sync with the current resume.
