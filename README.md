@@ -4,6 +4,8 @@ Source for my personal portfolio at [kiarashminoo.com](https://kiarashminoo.com)
 
 The site is a small static GitHub Pages project. It contains my current engineering profile, selected projects, work history, technical writing links, contact details, and the downloadable CV used from the site header.
 
+[![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/kiarashminoo/kiarashminoo.github.io?utm_source=readme&utm_medium=badge)
+
 ## Main content
 
 The project section currently highlights:
