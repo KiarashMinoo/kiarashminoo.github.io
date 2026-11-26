@@ -1,0 +1,48 @@
+name: Ping IndexNow
+
+on:
+  # Runs after GitHub Pages finishes deploying the site.
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+  # Allows a manual submission from the Actions tab.
+  workflow_dispatch:
+
+permissions: {}
+
+env:
+  HOST: kiarashminoo.com
+  KEY: 586f8ad24d244c6d9338902bd1011cc9
+
+jobs:
+  ping:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Submit URLs to IndexNow
+        run: |
+          set -euo pipefail
+
+          # Page URLs come from the live sitemap; the CV is added separately.
+          sitemap=$(curl -fsS --retry 3 "https://$HOST/sitemap.xml")
+          urls=$(
+            {
+              grep -oP '(?<=<loc>)[^<]+' <<< "$sitemap"
+              echo "https://$HOST/assets/Ahmad-Kiarash-Minoo-CV.pdf"
+            } | jq -R . | jq -s .
+          )
+
+          payload=$(jq -n \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --argjson urls "$urls" \
+            '{host: $host, key: $key, keyLocation: "https://\($host)/\($key).txt", urlList: $urls}')
+          echo "$payload"
+
+          # IndexNow answers 200 or 202 on success; --fail-with-body fails the job on 4xx/5xx.
+          curl -sS --fail-with-body --retry 3 \
+            -w '\nHTTP %{http_code}\n' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "$payload" \
+            https://api.indexnow.org/indexnow
