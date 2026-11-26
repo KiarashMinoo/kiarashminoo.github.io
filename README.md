@@ -24,11 +24,16 @@ assets/Ahmad-Kiarash-Minoo-CV.pdf
 
 ```text
 index.html       Main page content and structured metadata
+projects/        One page per featured project
+404.html         Not-found page
+sitemap.xml      Page list, also read by the IndexNow workflow
 styles.css       Site styling and responsive layout
 script.js        Navigation and small client-side behaviours
 assets/          Images, project marks and the downloadable CV
 CNAME            Custom-domain configuration
 ```
+
+When you add or change a page, update its entry and `lastmod` date in `sitemap.xml`.
 
 ## GitHub Pages
 

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ThunderPropagator: real-time streaming for .NET | Ahmad Kiarash Minoo</title>
+  <meta name="description" content="How ThunderPropagator splits real-time .NET streaming into channels, a client protocol, broker feeds, cluster buses, recovery handlers and serializers." />
+  <meta name="author" content="Ahmad Kiarash Minoo" />
+  <link rel="canonical" href="https://kiarashminoo.com/projects/thunderpropagator/" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/assets/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#07111f" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kiarashminoo.com/projects/thunderpropagator/" />
+  <meta property="og:site_name" content="Ahmad Kiarash Minoo" />
+  <meta property="og:title" content="ThunderPropagator: real-time streaming for .NET" />
+  <meta property="og:description" content="How ThunderPropagator splits real-time .NET streaming into channels, a client protocol, broker feeds, cluster buses, recovery handlers and serializers." />
+  <meta property="og:image" content="https://kiarashminoo.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://kiarashminoo.com/projects/thunderpropagator/#page",
+    "url": "https://kiarashminoo.com/projects/thunderpropagator/",
+    "name": "ThunderPropagator: real-time streaming for .NET",
+    "description": "How ThunderPropagator splits real-time .NET streaming into channels, a client protocol, broker feeds, cluster buses, recovery handlers and serializers.",
+    "dateModified": "2026-11-26",
+    "isPartOf": { "@id": "https://kiarashminoo.com/#website" },
+    "author": { "@type": "Person", "@id": "https://kiarashminoo.com/#person", "name": "Ahmad Kiarash Minoo", "url": "https://kiarashminoo.com/" },
+    "about": { "@type": "SoftwareSourceCode", "name": "ThunderPropagator", "programmingLanguage": "C#" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Ahmad Kiarash Minoo homepage">
+        <span>Ahmad (Kiarash) </span><strong>Minoo</strong>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" data-nav>
+        <a href="/">Home</a>
+        <a href="/#projects">Projects</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#writing">Writing</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article">
+      <p class="section-kicker">Real-time / streaming</p>
+      <h1>ThunderPropagator: real-time data streaming for .NET</h1>
+      <p>ThunderPropagator is my multi-repository streaming project for .NET. It delivers live data to clients through channels, and each integration point lives in its own module so an application can take only what it needs.</p>
+
+      <h2>The problem</h2>
+      <p>Live feeds such as market data, notifications and monitoring events arrive from different brokers and protocols. Clients need them pushed in a consistent format, and they need to recover state after a disconnect. I split those concerns into separate, replaceable parts.</p>
+
+      <h2>How it is organized</h2>
+      <ul>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.Channels">ThunderPropagator.Channels</a>: real-time channels and demos, including chat, monitoring, notifications, business feeds and multiplayer games.</li>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.Clients">ThunderPropagator.Clients</a>: the client protocol specification: wire formats, transports, authentication, subscriptions, failover and compliance.</li>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.Clients.DotNet">ThunderPropagator.Clients.DotNet</a>: the reference .NET client, with WebSocket, QUIC and InfiniteDataStream transports, channel subscriptions and encryption.</li>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.Feeviders">ThunderPropagator.Feeviders</a>: feeders and providers for Kafka, RabbitMQ, NATS, Pulsar, MQTT, ActiveMQ, Redis, HTTP, WebSocket, TCP and UDP.</li>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.ClusterMessageBuses">ThunderPropagator.ClusterMessageBuses</a>: pluggable buses that coordinate nodes and distribute internal cluster events.</li>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.RecoveryHandlers">ThunderPropagator.RecoveryHandlers</a>: snapshot recovery backed by Redis, MongoDB or PostgreSQL.</li>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.FormatSerializers">ThunderPropagator.FormatSerializers</a>: message serializers for protocol negotiation, covering MessagePack, JSON, Protobuf, TOON, XML and YAML.</li>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.SubscriptionMessageFormatters">ThunderPropagator.SubscriptionMessageFormatters</a>: formatters for subscription messages and outbound push payloads.</li>
+        <li><a href="https://github.com/KiarashMinoo/ThunderPropagator.BuildingBlocks">ThunderPropagator.BuildingBlocks</a>: shared abstractions used across the other repositories.</li>
+      </ul>
+
+      <h2>Design choices</h2>
+      <ul>
+        <li>The client protocol has its own specification repository, so clients can be built against a written contract.</li>
+        <li>Brokers, cluster buses, recovery stores and serializers are pluggable.</li>
+        <li>The protocol covers heartbeats, reconnection, failover, snapshots and subscription recovery.</li>
+      </ul>
+
+      <div class="cta-row">
+        <a class="btn btn-ghost" href="/#projects">All projects</a>
+        <a class="btn btn-primary" href="/#contact">Get In Touch</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand small-brand" href="/"><span>www.</span><strong>kiarashminoo</strong><em>.com</em></a>
+      <p>© <span data-year></span> Ahmad (Kiarash) Minoo. All rights reserved.</p>
+      <a href="#" class="back-top">Back to top ↑</a>
+    </footer>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>

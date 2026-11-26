@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IIIF.Manifest.Serializer.Net: IIIF for .NET | Ahmad Kiarash Minoo</title>
+  <meta name="description" content="Open-source .NET library that reads, writes, validates and converts IIIF Presentation API 2.0, 2.1 and 3.0 manifests. MIT licensed, on NuGet." />
+  <meta name="author" content="Ahmad Kiarash Minoo" />
+  <link rel="canonical" href="https://kiarashminoo.com/projects/iiif-manifest-serializer-net/" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/assets/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#07111f" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kiarashminoo.com/projects/iiif-manifest-serializer-net/" />
+  <meta property="og:site_name" content="Ahmad Kiarash Minoo" />
+  <meta property="og:title" content="IIIF.Manifest.Serializer.Net: IIIF for .NET" />
+  <meta property="og:description" content="Open-source .NET library that reads, writes, validates and converts IIIF Presentation API 2.0, 2.1 and 3.0 manifests. MIT licensed, on NuGet." />
+  <meta property="og:image" content="https://kiarashminoo.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://kiarashminoo.com/projects/iiif-manifest-serializer-net/#page",
+    "url": "https://kiarashminoo.com/projects/iiif-manifest-serializer-net/",
+    "name": "IIIF.Manifest.Serializer.Net: IIIF for .NET",
+    "description": "Open-source .NET library that reads, writes, validates and converts IIIF Presentation API 2.0, 2.1 and 3.0 manifests. MIT licensed, on NuGet.",
+    "dateModified": "2026-11-26",
+    "isPartOf": { "@id": "https://kiarashminoo.com/#website" },
+    "author": { "@type": "Person", "@id": "https://kiarashminoo.com/#person", "name": "Ahmad Kiarash Minoo", "url": "https://kiarashminoo.com/" },
+    "about": { "@type": "SoftwareSourceCode", "name": "IIIF.Manifest.Serializer.Net", "programmingLanguage": "C#" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Ahmad Kiarash Minoo homepage">
+        <span>Ahmad (Kiarash) </span><strong>Minoo</strong>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" data-nav>
+        <a href="/">Home</a>
+        <a href="/#projects">Projects</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#writing">Writing</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="article">
+      <p class="section-kicker">Open source / NuGet / MIT</p>
+      <h1>IIIF.Manifest.Serializer.Net: IIIF Presentation API for .NET</h1>
+      <p>A .NET library for building, reading, validating, converting and serializing <a href="https://iiif.io/api/presentation/3.0/">IIIF Presentation API</a> resources. It reads and writes versions 2.0, 2.1 and 3.0.</p>
+
+      <h2>The problem</h2>
+      <p>Presentation API 3.0 changed the shape of manifests, while plenty of 2.x JSON still exists. An application that handles both should not need two object models.</p>
+
+      <h2>Design</h2>
+      <ul>
+        <li>Most resources use one model shaped like 3.0. Legacy 2.x properties are computed views over it.</li>
+        <li><code>IiifSerializer</code> is the entry point. It detects the input version and writes 3.0 by default, or 2.x on request.</li>
+        <li><code>System.Text.Json</code> converters produce the same IIIF JSON, including ASP.NET Core's default serialization.</li>
+        <li>The library tracks changes across the object graph and can produce changed-only manifest deltas.</li>
+        <li>Separate packages add navPlace, Georeference and Text Granularity support.</li>
+      </ul>
+
+      <h2>Install</h2>
+      <pre><code>dotnet add package IIIF.Manifest.Serializer.Net</code></pre>
+<pre><code>var json = IiifSerializer.Serialize(manifest);
+var parsed = IiifSerializer.DeserializeManifest(json);</code></pre>
+
+      <h2>Testing</h2>
+      <p>The repository reports 557 unit tests, 8 architecture tests and about 82% line coverage for the core and extension packages. A cookbook project rebuilds 71 IIIF Cookbook recipes in C#.</p>
+
+      <h2>Links</h2>
+      <ul>
+        <li><a href="https://github.com/KiarashMinoo/IIIF.Manifest.Serializer.Net">Source and documentation on GitHub</a></li>
+        <li><a href="https://www.nuget.org/packages/IIIF.Manifest.Serializer.Net">Package on NuGet</a></li>
+        <li><a href="https://github.com/KiarashMinoo/IIIF.POC.EventSourcedManifestStore">IIIF.POC.EventSourcedManifestStore</a>: manifests rebuilt from KurrentDB event streams.</li>
+        <li><a href="https://github.com/KiarashMinoo/IIIF.POC.PostgreSqlRelationalV3Store">IIIF.POC.PostgreSqlRelationalV3Store</a>: relational storage with EF Core and PostgreSQL.</li>
+        <li><a href="https://github.com/KiarashMinoo/IIIF.POC.ChangeTrackingLab">IIIF.POC.ChangeTrackingLab</a>: nested object-graph deltas and revision history.</li>
+      </ul>
+
+      <div class="cta-row">
+        <a class="btn btn-ghost" href="/#projects">All projects</a>
+        <a class="btn btn-primary" href="/#contact">Get In Touch</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand small-brand" href="/"><span>www.</span><strong>kiarashminoo</strong><em>.com</em></a>
+      <p>© <span data-year></span> Ahmad (Kiarash) Minoo. All rights reserved.</p>
+      <a href="#" class="back-top">Back to top ↑</a>
+    </footer>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
